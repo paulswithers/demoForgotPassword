@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="jsoup-1.8.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-client-compiled-7.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-push-7.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-sass-compiler-0.9.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-server-7.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-shared-7.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-slf4j-jdk14-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="vaadin-themes-7.4.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
