@@ -2,9 +2,11 @@ package com.paulwithers.demoForgotPassword;
 
 import lotus.domino.NotesThread;
 
+import org.openntf.domino.Session;
 import org.openntf.domino.utils.Factory;
 import org.openntf.domino.utils.Factory.SessionType;
 
+import com.ibm.domino.osgi.core.context.ContextInfo;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
@@ -36,16 +38,25 @@ public class PasswordUI extends UI {
 		layout.addComponent(label);
 		layout.setComponentAlignment(label, Alignment.TOP_CENTER);
 
-		Factory.initThread(Factory.STRICT_THREAD_CONFIG);
-		NotesThread.sinitThread();
-		Label label2 = new Label();
-		System.out.println("Getting username");
-		label2.setValue(Factory.getSession(SessionType.CURRENT).getEffectiveUserName());
-		layout.addComponent(label2);
-		layout.setComponentAlignment(label2, Alignment.TOP_LEFT);
+		try {
+			Factory.initThread(Factory.STRICT_THREAD_CONFIG);
+			NotesThread.sinitThread();
+			Session mySess = Utils.getUserSession(ContextInfo.getUserSession());
+			Label label2 = new Label();
+			label2.setValue(mySess.getEffectiveUserName());
+			layout.addComponent(label2);
+			layout.setComponentAlignment(label2, Alignment.TOP_LEFT);
+			Label label3 = new Label();
+			label3.setValue(Factory.getSession(SessionType.NATIVE).getEffectiveUserName());
+			layout.addComponent(label3);
+			layout.setComponentAlignment(label3, Alignment.TOP_LEFT);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 
-		NotesThread.stermThread();
-		Factory.termThread();
+			NotesThread.stermThread();
+			Factory.termThread();
+		}
 	}
 
 }
